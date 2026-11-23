@@ -620,9 +620,18 @@ n_mat <- matrix(ncol = 6, nrow = 0)
 
 init_slope_rosenbaum <- bahadur_slope_rosenbaum_normal(kappa, muv, sigv, rho = 0, Gamma = 1)
 for(a in a_grid){
-  slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
-  slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 3)))
-  n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 3)))
+  
+  if(a <= 1){
+    slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
+    slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 3)))
+    n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 3))) 
+  }
+  if(a > 1){
+    slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
+    slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 2), init_slope_rosenbaum$slope))
+    n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 2), init_slope_rosenbaum$min_n)) 
+  }
+  
 }
 
 
@@ -759,9 +768,18 @@ n_mat <- matrix(ncol = 6, nrow = 0)
 
 init_slope_rosenbaum <- bahadur_slope_rosenbaum_normal(kappa, muv, sigv, rho = 0, Gamma = 1)
 for(a in a_grid){
-  slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
-  slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 3)))
-  n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 3)))
+  
+  if(a <= 1){
+    slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
+    slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 3)))
+    n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 3))) 
+  }
+  if(a > 1){
+    slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
+    slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 2), init_slope_rosenbaum$slope))
+    n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 2), init_slope_rosenbaum$min_n)) 
+  }
+  
 }
 
 for(g in gamma_grid){
@@ -882,11 +900,19 @@ n_mat <- matrix(ncol = 6, nrow = 0)
 
 init_slope_rosenbaum <- bahadur_slope_rosenbaum_normal(kappa, muv, sigv, rho = 0, Gamma = 1)
 for(a in a_grid){
-  slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
-  slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 3)))
-  n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 3)))
+  
+  if(a <= 1){
+    slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
+    slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 3)))
+    n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 3))) 
+  }
+  if(a > 1){
+    slope_CH <- bahadur_slope_CH_initial(kappa, muv, sigv, a)
+    slope_mat <- rbind(slope_mat, c(1, a, init_slope_rosenbaum$slope, rep(slope_CH$slope, 2), init_slope_rosenbaum$slope))
+    n_mat <- rbind(n_mat, c(1, a, init_slope_rosenbaum$min_n, rep(slope_CH$min_n, 2), init_slope_rosenbaum$min_n)) 
+  }
+  
 }
-
 for(g in gamma_grid){
   
   for(a in a_grid){

@@ -21,7 +21,7 @@
 #### Libraries and functions ---------------------------------------------------
 
 # installs any missing packages, then loads them into the library
-required_packages <- c("quadprog", "ggplot2", "latex2exp", "lqmm", "mosaic", 
+required_packages <- c("quadprog", "ggplot2", "latex2exp", "lqmm", # "mosaic", 
                        "stats", "tidyverse", "mvtnorm", "MASS", "VGAM", 
                        "Rsolnp", "nloptr", "sensitivitymult", "doSNOW", 
                        "foreach", "doParallel")
